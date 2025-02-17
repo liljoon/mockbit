@@ -28,3 +28,7 @@ variable "db_administrator_login" {
 variable "db_administrator_password" {
   type = string
 }
+
+variable "db_sku_name" {
+  type = string
+}
