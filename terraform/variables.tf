@@ -1,4 +1,5 @@
-variable "resource_group_name" {
+# General
+variable "name_prefix" {
   type = string
 }
 
@@ -6,10 +7,11 @@ variable "location" {
   type = string
 }
 
-variable "aks_cluster_name" {
+variable "subscription_id" {
   type = string
 }
 
+# AKS
 variable "node_count" {
   type = number
 }
@@ -18,6 +20,11 @@ variable "vm_size" {
   type = string
 }
 
-variable "subscription_id" {
+# DB
+variable "db_administrator_login" {
+  type = string
+}
+
+variable "db_administrator_password" {
   type = string
 }
