@@ -26,3 +26,5 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
 }
+
+// TODO : 권한 연결 (ACR-AKS)
