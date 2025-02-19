@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"log"
 	"net/http"
 	"os"
@@ -74,6 +75,13 @@ func initRedis() *redsync.Redsync {
 		Addr:     os.Getenv("REDIS_IP"),
 		Password: os.Getenv("REDIS_PW"),
 	})
+
+	// check connection
+	r := client.Ping(context.Background())
+	if r.Err() != nil {
+		log.Fatal("Redis: ", r.Err().Error())
+	}
+
 	pool := goredis.NewPool(client)
 
 	rs := redsync.New(pool)
