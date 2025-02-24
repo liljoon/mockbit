@@ -2,12 +2,15 @@ FROM golang:tip-alpine AS builder
 
 WORKDIR /app
 
-COPY . .
-
-COPY woongjin.cer /usr/local/share/ca-certificates/woongjin.cer
+COPY woongjin.cer woongjin.cer
 RUN cat woongjin.cer >> /etc/ssl/certs/ca-certificates.crt
 
+COPY go.mod go.mod
+COPY go.sum go.sum
+
 RUN go mod download
+
+COPY . .
 
 RUN go build -o server .
 
