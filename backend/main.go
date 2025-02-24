@@ -52,8 +52,10 @@ func postOrder(c *gin.Context) {
 	db.Where("status = ?", "matched").Find(&[]Order{}).Count(&count)
 	if count < 50 {
 		newOrder.Status = "matched"
+		log.Println("matched")
 	} else {
 		newOrder.Status = "pending"
+		log.Println("pending")
 	}
 	db.Create(&newOrder)
 
