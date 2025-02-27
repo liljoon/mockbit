@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mockbit-configmap
+data:
+  POSTGRES_DSN: ""
+  REDIS_IP : ""
+  REDIS_PW : ""

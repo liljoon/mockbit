@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mockbit-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mockbit-deployment
+  template:
+    metadata:
+      labels:
+        app: mockbit-deployment
+    spec:
+      containers:
+      - name: mockbit-deployment
+        image: 
+        imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: mockbit-configmap
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+      
